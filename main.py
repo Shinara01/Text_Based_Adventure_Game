@@ -2,6 +2,7 @@ from room import Room
 from item import Item
 from character import Enemy, Friend
 from time import sleep
+from instructions import *
 
 #Create the rooms
 kitchen = Room("Kitchen", "A dank and dirty place buzzing with flies.")
@@ -37,6 +38,10 @@ dining_hall.set_character(sally)
 #Move between rooms
 current_room = kitchen
 
+#Print instructions
+by_letter(opening)
+
+#The Game
 while True:
     
     sleep(1)
@@ -73,7 +78,7 @@ while True:
         sleep(1)
         
         if outcome == False:
-            print("You are dead!")
+            print("You are dead! Game Over")
             sleep(1)
             break
     
@@ -83,6 +88,11 @@ while True:
             print("Your bag is currently empty.")
         else:
             print(f"Your bag contains: {gamers_bag}")
+    
+    elif instruction == "quit":
+        print("The game will now close...")
+        sleep(1)
+        break
 
 
  
