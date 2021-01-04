@@ -1,9 +1,12 @@
 class Item(object):
 
-    def __init__ (self, item_name, item_description):
+    def __init__ (self, item_name):
         self.name = item_name
-        self.description = item_description
+        self.description = None
         self.value = None
+    
+    def __repr__(self):
+        return self.name
         
     def set_name(self, item_name):
         self.name = item_name
@@ -22,7 +25,7 @@ class Item(object):
     
     def print_description(self):
         print(self.description)
-    
+       
     def set_value(self, item_value):
         self.value = item_value
     

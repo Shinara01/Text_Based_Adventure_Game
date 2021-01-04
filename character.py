@@ -8,9 +8,8 @@ class Character():
         self.weakness = None
 
     #Describe this character
-    def describe(self):
-        print( self.name + " is here!" )
-        print( self.description )
+    def get_char_details(self):
+        print(f"{self.name} is here! {self.name} is a {self.description}")
 
     #Set what this character will say when talked to
     def set_conversation(self, conversation):
@@ -30,10 +29,12 @@ class Character():
     
 class Enemy(Character):
 
+    #Create an enemy
     def __init__(self, char_name, char_description):
         super().__init__(char_name, char_description)
         self.weakness = None
-
+        self.enemy_bag = []
+        
     def set_weakness(self, enemy_weakness):
         self.weakness = enemy_weakness
     
@@ -42,7 +43,7 @@ class Enemy(Character):
     
     def print_weakness(self):
         print(self.weakness)
-    
+        
     def fight(self, combat_item):
         if combat_item == self.weakness:
             print(f"You fend off {self.name} with {combat_item}")
@@ -51,4 +52,31 @@ class Enemy(Character):
             print(f"{self.name} crushes you, puny adventurer!")
             return False
 
+class Friend(Character):
+
+    def __init__(self, char_name, char_description):
+        super().__init__(char_name, char_description)
+        self.gift = None
+    
+    def set_gift(self, gift):
+        self.gift = gift
+    
+    # def get_gift(self):
+    #     return self.gift
+    
+    def give_gift(self, gamers_bag):
+        
+        if self.gift is not None:
+            offer = input("Would you like a gift? ").lower()
+
+            if offer == "yes":
+                print(f"You have accepted {self.name}'s gift. It is {self.gift}.")
+                gamers_bag.append(self.gift)
+                self.gift = None
+                print(f"Your bag now contains: {gamers_bag}")
+            else:
+                print(f"Ok. Maybe another time then...")
+
+        else:
+            print("Sorry I don't have any gifts for you at the moment.")
 
