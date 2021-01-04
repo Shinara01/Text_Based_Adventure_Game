@@ -61,13 +61,10 @@ class Friend(Character):
     def set_gift(self, gift):
         self.gift = gift
     
-    # def get_gift(self):
-    #     return self.gift
-    
     def give_gift(self, gamers_bag):
         
         if self.gift is not None:
-            offer = input("Would you like a gift? ").lower()
+            offer = input(f"[{self.name} says]: Would you like a gift? ").lower()
 
             if offer == "yes":
                 print(f"You have accepted {self.name}'s gift. It is {self.gift}.")
@@ -75,7 +72,7 @@ class Friend(Character):
                 self.gift = None
                 print(f"Your bag now contains: {gamers_bag}")
             else:
-                print(f"Ok. Maybe another time then...")
+                print(f"[{self.name} says]: Ok. Maybe another time then...")
 
         else:
             print("Sorry I don't have any gifts for you at the moment.")
