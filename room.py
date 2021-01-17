@@ -1,3 +1,5 @@
+from instructions import by_letter
+
 class Room(object):
 
     def __init__ (self, room_name, room_description):
@@ -13,7 +15,7 @@ class Room(object):
         return self.name
     
     def print_name(self):
-        print(self.name)
+        by_letter(f"{self.name}\n")
     
     def set_description(self, room_description):
         self.description = room_description
@@ -22,18 +24,18 @@ class Room(object):
         return self.description
     
     def print_description(self):
-        print(self.description)
+        by_letter(f"{self.description}\n")
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
     
     def print_linked_rooms(self):
-        print(self.linked_rooms.items())
+        by_letter(f"{self.linked_rooms.items()}\n")
     
     def get_room_details(self):
         
         self.print_name()
-        print("----------------")
+        by_letter("----------------\n")
         self.print_description()
 
         for key in self.linked_rooms:
