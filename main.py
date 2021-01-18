@@ -37,27 +37,34 @@ dining_hall.set_character(sally)
 
 #Move between rooms
 current_room = kitchen
+print_instructions = True
 
 #Print instructions
-by_letter(opening)
+by_letter(opening, False)
 
 #The Game
 while True:
     
     sleep(1)
     print("\n")
-    current_room.get_room_details()
+
+    if print_instructions == True:
+        current_room.get_room_details()
+        print_instructions = False
+   
     sleep(1)
     
     inhabitant = current_room.get_character()
     if inhabitant is not None:
-        inhabitant.get_char_details()
+        inhabitant.get_char_details() #need a True/False for this as well.
 
     print("\n")
-    instruction = input("Input command: ").lower()
+    by_letter("Input command: ", False)
+    instruction = input().lower()
 
     if instruction in ["north", "south", "east", "west"]:
         current_room = current_room.move(instruction)
+        print_instructions = True
 
     elif instruction == "talk":
         sleep(1)
